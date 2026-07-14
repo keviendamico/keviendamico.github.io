@@ -1,0 +1,191 @@
+<!doctype html>
+<html class="no-js" lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kevien Damico — Backend Developer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Portfolio di Kevien Damico, Backend Developer Java / NodeJS. Esperienza, progetti open source e contatti.">
+
+  <meta property="og:title" content="Kevien Damico — Backend Developer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://keviendamico.github.io/">
+  <meta property="og:image" content="icon.png">
+  <meta property="og:image:alt" content="Logo di Kevien Damico">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0d1117">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__brand" href="#top">KD</a>
+      <a class="btn btn--ghost nav__cv" href="kevien_damico_cv.pdf" download>Scarica CV</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">Chi sono</a></li>
+        <li><a href="#skills">Competenze</a></li>
+        <li><a href="#projects">Progetti</a></li>
+        <li><a href="#experience">Esperienza</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <section class="hero container">
+      <img class="hero__avatar" id="avatar" src="img/kevien-damico-reduced.jpg" alt="Foto di Kevien Damico"
+           onerror="this.style.display='none'">
+      <p class="hero__eyebrow">Hello, World! Sono</p>
+      <h1 class="hero__name">Kevien Damico</h1>
+      <p class="hero__role">Backend Developer - Java | NodeJS</p>
+      <p class="hero__pitch">
+        Sviluppo applicazioni web, API REST e microservizi con focus su architetture distribuite,
+        messaging asincrono (Kafka, RabbitMQ) e integrazione di sistemi.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#projects">Vedi i progetti</a>
+        <a class="btn btn--ghost" href="https://github.com/keviendamico" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn--ghost" href="mailto:keviendamico@outlook.it">Contattami</a>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2 class="section__title">Chi sono</h2>
+      <p class="about__text">
+        Backend Developer con esperienza consolidata nello sviluppo di applicazioni web, API REST,
+        plugin e connettori in Java e NodeJS (TypeScript). Ho lavorato su progetti per la pubblica
+        amministrazione, il settore sanitario pubblico, una delle principali aziende mondiali di servizi
+        di traduzione e una piattaforma americana leader nel settore degli affitti. Abituato a contesti
+        Agile, seguo l'intero ciclo di vita del software, dalla progettazione alla delivery, sia in team
+        che individualmente.
+      </p>
+    </section>
+
+    <section id="skills" class="section container">
+      <h2 class="section__title">Competenze</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Linguaggi</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#b07219">Java</li>
+            <li style="--dot-color:#3178c6">TypeScript</li>
+            <li style="--dot-color:#f1e05a">JavaScript</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Framework &amp; Librerie</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#6db33f">Spring</li>
+            <li style="--dot-color:#5a45ff">AdonisJS</li>
+            <li style="--dot-color:#dd0031">Angular</li>
+            <li style="--dot-color:#fc5d0d">Camunda</li>
+            <li style="--dot-color:#8b949e">Quartz Scheduler</li>
+            <li style="--dot-color:#8b949e">BullMQ</li>
+            <li style="--dot-color:#005f0f">Thymeleaf</li>
+            <li style="--dot-color:#7952b3">Bootstrap</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>ORM / OM</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#8b949e">Hibernate</li>
+            <li style="--dot-color:#5a45ff">Lucid ORM</li>
+            <li style="--dot-color:#8b949e">MyBatis</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Database</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#4479a1">MySQL</li>
+            <li style="--dot-color:#336791">PostgreSQL</li>
+            <li style="--dot-color:#47a248">MongoDB</li>
+            <li style="--dot-color:#f80000">OracleDB</li>
+            <li style="--dot-color:#0f62fe">DB2</li>
+            <li style="--dot-color:#00bfb3">Elasticsearch</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Messaging / Streaming</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#231f20">Apache Kafka</li>
+            <li style="--dot-color:#ff6600">RabbitMQ</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Infrastructure / DevOps</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#2496ed">Docker</li>
+            <li style="--dot-color:#ff9900">AWS</li>
+            <li style="--dot-color:#f05032">Git</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section container">
+      <h2 class="section__title">Progetti</h2>
+      <p class="section__subtitle">
+        Selezione di progetti pubblici dal mio
+        <a href="https://github.com/keviendamico" target="_blank" rel="noopener">GitHub</a>,
+        fetch in tempo reale.
+      </p>
+      <div id="projects-grid" class="projects-grid" aria-live="polite">
+        <p class="projects-status">Caricamento progetti da GitHub…</p>
+      </div>
+    </section>
+
+    <section id="experience" class="section container">
+      <h2 class="section__title">Esperienza lavorativa</h2>
+      <ol class="timeline">
+        <li class="timeline__item">
+          <div class="timeline__meta">04/2026 — 07/2026</div>
+          <h3>Backend Developer · Rextart SRL</h3>
+          <p>Sviluppo di applicazioni web, API REST e microservizi in Java, con focus su architetture
+             distribuite e integrazione di sistemi, in contesti Agile.</p>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__meta">11/2021 — 04/2026</div>
+          <h3>Backend Developer · Humans.tech SRL</h3>
+          <p>Sviluppo di applicazioni web, API REST, plugin e connettori in Java e NodeJS (TypeScript)
+             per pubblica amministrazione, sanità pubblica e piattaforme internazionali.</p>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__meta">12/2021</div>
+          <h3>Formazione · Analista Programmatore</h3>
+          <p>Istituto CEFI (Roma)</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2 class="section__title">Contatti</h2>
+      <div class="contact-links">
+        <a class="btn btn--primary" href="mailto:keviendamico@outlook.it">keviendamico@outlook.it</a>
+        <a class="btn btn--ghost" href="https://github.com/keviendamico" target="_blank" rel="noopener">github.com/keviendamico</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Kevien Damico</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
