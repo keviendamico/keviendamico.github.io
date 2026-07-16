@@ -33,6 +33,66 @@ function languageColor(language) {
   return LANGUAGE_COLORS[language] || '#8b949e';
 }
 
+const MAX_LANGS_SHOWN = 4;
+const LANG_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
+function getCachedLanguages(repo) {
+  try {
+    const raw = localStorage.getItem(`gh-langs:${repo.full_name}`);
+    if (!raw) return null;
+    const { languages, ts } = JSON.parse(raw);
+    if (Date.now() - ts > LANG_CACHE_TTL_MS) return null;
+    return languages;
+  } catch {
+    return null;
+  }
+}
+
+function setCachedLanguages(repo, languages) {
+  try {
+    localStorage.setItem(`gh-langs:${repo.full_name}`, JSON.stringify({ languages, ts: Date.now() }));
+  } catch {
+    // localStorage unavailable (e.g. private browsing) — caching is best-effort.
+  }
+}
+
+// GitHub's repo list only exposes the primary language, so each repo's full
+// language breakdown needs its own request. Cached in localStorage since
+// unauthenticated requests are capped at 60/hour.
+async function fetchRepoLanguages(repo) {
+  const cached = getCachedLanguages(repo);
+  if (cached) return cached;
+
+  try {
+    const res = await fetch(repo.languages_url);
+    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+    const data = await res.json();
+    const languages = Object.keys(data).sort((a, b) => data[b] - data[a]);
+    setCachedLanguages(repo, languages);
+    return languages;
+  } catch (err) {
+    console.error(err);
+    return repo.language ? [repo.language] : [];
+  }
+}
+
+function renderLangDots(languages) {
+  if (!languages || languages.length === 0) return '';
+  const shown = languages.slice(0, MAX_LANGS_SHOWN);
+  const dots = shown
+    .map(
+      (lang) => `
+        <span class="project-card__lang">
+          <span class="project-card__lang-dot" style="background:${languageColor(lang)}"></span>
+          ${lang}
+        </span>`
+    )
+    .join('');
+  const extra = languages.length - shown.length;
+  const extraBadge = extra > 0 ? `<span class="project-card__lang project-card__lang--extra">+${extra}</span>` : '';
+  return `<span class="project-card__langs">${dots}${extraBadge}</span>`;
+}
+
 // Multi-repo systems get collapsed into a single featured card instead of
 // one near-identical card per repo.
 const PROJECT_GROUPS = [
@@ -43,7 +103,6 @@ const PROJECT_GROUPS = [
       'Java/Spring Cloud microservices stack for an e-commerce system: API Gateway, ' +
       'Discovery Server (Eureka), centralized Config Server, and order, product and ' +
       'inventory services communicating via OpenFeign with Resilience4j circuit breakers.',
-    language: 'Java',
   },
   {
     match: (name) => name.startsWith('ecommerce-ms-'),
@@ -52,7 +111,6 @@ const PROJECT_GROUPS = [
       'Event-driven distributed e-commerce system built with Apache Kafka and shared ' +
       'Avro schemas: a choreography-based saga pattern with no central orchestrator, ' +
       'handling orders, payments, inventory and notifications.',
-    language: 'Java',
   },
 ];
 
@@ -75,7 +133,7 @@ function buildGroupedProjects(repos) {
       featured: true,
       title: g.title,
       description: g.description,
-      language: g.language,
+      languages: Array.from(new Set(g.repos.flatMap((r) => r.languages || (r.language ? [r.language] : [])))),
       subRepos: g.repos.sort((a, b) => a.name.localeCompare(b.name)),
       pushed_at: g.repos.reduce(
         (latest, r) => (r.pushed_at > latest ? r.pushed_at : latest),
@@ -101,10 +159,7 @@ function renderFeaturedCard(project) {
       <p class="project-card__desc">${project.description}</p>
       <ul class="project-card__subrepos">${subRepoLinks}</ul>
       <div class="project-card__meta">
-        <span class="project-card__lang">
-          <span class="project-card__lang-dot" style="background:${languageColor(project.language)}"></span>
-          ${project.language}
-        </span>
+        ${renderLangDots(project.languages)}
         <span>${project.subRepos.length} repository</span>
         <a class="project-card__more" href="https://github.com/${GITHUB_USER}?tab=repositories" target="_blank" rel="noopener">Vedi tutti su GitHub →</a>
       </div>
@@ -119,11 +174,7 @@ function renderRepoCard(repo) {
       <h3 class="project-card__title">${repo.name}</h3>
       <p class="project-card__desc">${description}</p>
       <div class="project-card__meta">
-        ${repo.language ? `
-          <span class="project-card__lang">
-            <span class="project-card__lang-dot" style="background:${languageColor(repo.language)}"></span>
-            ${repo.language}
-          </span>` : ''}
+        ${renderLangDots(repo.languages)}
         ${repo.stargazers_count > 0 ? `<span>★ ${repo.stargazers_count}</span>` : ''}
       </div>
     </a>
@@ -142,6 +193,12 @@ async function loadProjects() {
       grid.innerHTML = '<p class="projects-status">Nessun repository pubblico trovato.</p>';
       return;
     }
+
+    await Promise.all(
+      visible.map(async (r) => {
+        r.languages = await fetchRepoLanguages(r);
+      })
+    );
 
     const projects = buildGroupedProjects(visible);
     grid.innerHTML = projects
