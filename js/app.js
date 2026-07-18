@@ -98,7 +98,7 @@ function renderLangDots(languages) {
 const PROJECT_GROUPS = [
   {
     match: (name) => name.startsWith('ecommerce-spring-cloud'),
-    title: 'E-commerce a microservizi (Spring Cloud)',
+    title: 'E-commerce microservices (Spring Cloud)',
     description:
       'Java/Spring Cloud microservices stack for an e-commerce system: API Gateway, ' +
       'Discovery Server (Eureka), centralized Config Server, and order, product and ' +
