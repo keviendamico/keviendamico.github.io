@@ -112,6 +112,18 @@ const PROJECT_GROUPS = [
       'Avro schemas: a choreography-based saga pattern with no central orchestrator, ' +
       'handling orders, payments, inventory and notifications.',
   },
+  {
+    match: (name) => name.startsWith('bff-'),
+    title: 'BFF stack for a Keycloak-secured SPA',
+    description:
+      'Two-service Backend-for-Frontend for a browser-based SPA: bff-gateway handles ' +
+      'the OAuth2 Authorization Code Flow (PKCE) with Keycloak and keeps all tokens ' +
+      'server-side via Redis-backed sessions, exposing only an HTTP-only cookie to ' +
+      'the browser; bff-authorization validates Keycloak tokens, auto-provisions ' +
+      'users, syncs roles, and issues signed RS256 internal JWTs (no PII), reachable ' +
+      'only from the gateway. Built with Spring Boot 4 (Spring Cloud Gateway/WebFlux ' +
+      'and Spring MVC), PostgreSQL + Flyway.',
+  },
 ];
 
 function buildGroupedProjects(repos) {
