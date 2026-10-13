@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kevien Damico — Backend Developer</title>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="Portfolio di Kevien Damico, Backend Developer Java / NodeJS. Esperienza, progetti open source e contatti.">
+  <meta name="description" content="Portfolio di Kevien Damico, Backend Developer Java / Node.js (TypeScript), freelance full-remote. Esperienza, progetti open source e contatti.">
 
   <meta property="og:title" content="Kevien Damico — Backend Developer">
   <meta property="og:type" content="website">
@@ -50,10 +50,10 @@
            onerror="this.style.display='none'">
       <p class="hero__eyebrow">Hello, World! Sono</p>
       <h1 class="hero__name">Kevien Damico</h1>
-      <p class="hero__role">Backend Developer - Java | NodeJS</p>
+      <p class="hero__role">Backend Developer - Java | Node.js (TypeScript)</p>
       <p class="hero__pitch">
-        Sviluppo applicazioni web, API REST e microservizi con focus su architetture distribuite,
-        messaging asincrono (Kafka, RabbitMQ) e integrazione di sistemi.
+        Freelance a P.IVA · Full-remote. Sviluppo API REST, microservizi e integrazioni tra sistemi,
+        con architetture distribuite basate su messaggistica asincrona (Kafka, RabbitMQ) e infrastruttura AWS.
       </p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#projects">Vedi i progetti</a>
@@ -65,12 +65,21 @@
     <section id="about" class="section container">
       <h2 class="section__title">Chi sono</h2>
       <p class="about__text">
-        Backend Developer con esperienza consolidata nello sviluppo di applicazioni web, API REST,
-        plugin e connettori in Java e NodeJS (TypeScript). Ho lavorato su progetti per la pubblica
-        amministrazione, il settore sanitario pubblico, una delle principali aziende mondiali di servizi
-        di traduzione e una piattaforma americana leader nel settore degli affitti. Abituato a contesti
-        Agile, seguo l'intero ciclo di vita del software, dalla progettazione alla delivery, sia in team
-        che individualmente.
+        Sviluppatore backend con 5 anni di esperienza su API REST, microservizi e integrazioni tra sistemi,
+        principalmente con Java/Spring Boot e Node.js/TypeScript (AdonisJS). Progetto e realizzo architetture
+        distribuite basate su messaggistica asincrona (Kafka, RabbitMQ) e job orchestration (Quartz, BullMQ),
+        con persistenza su database relazionali e NoSQL (PostgreSQL, MySQL, Oracle, DB2, MongoDB, Elasticsearch).
+      </p>
+      <p class="about__text">
+        Lato infrastruttura gestisco ambienti AWS end-to-end (EC2, RDS, ElastiCache, S3, CloudFront, IAM,
+        EventBridge), con attività di cost optimization, hardening e migrazione di carichi tra cloud e server
+        self-hosted, oltre a Docker e pipeline CI/CD su GitHub Actions.
+      </p>
+      <p class="about__text">
+        Ho esperienza su domini eterogenei: pubblica amministrazione, sanità pubblica, sociale, localizzazione
+        e traduzione con connettori verso CMS e TMS (Contentful, Contentstack, XTM, Zendesk), ERP. Seguo
+        l'intero ciclo di vita del software in contesti Agile, dall'analisi al rilascio, e collaboro con
+        software house e clienti finali su progetti a medio-lungo termine, in autonomia o in team già strutturati.
       </p>
     </section>
 
@@ -95,6 +104,9 @@
             <li style="--dot-color:#8b949e">Quartz Scheduler</li>
             <li style="--dot-color:#8b949e">BullMQ</li>
             <li style="--dot-color:#005f0f">Thymeleaf</li>
+            <li style="--dot-color:#8b949e">Handlebars</li>
+            <li style="--dot-color:#8b949e">Mustache</li>
+            <li style="--dot-color:#8b949e">Jasper Report</li>
             <li style="--dot-color:#7952b3">Bootstrap</li>
           </ul>
         </div>
@@ -115,6 +127,7 @@
             <li style="--dot-color:#f80000">OracleDB</li>
             <li style="--dot-color:#0f62fe">DB2</li>
             <li style="--dot-color:#00bfb3">Elasticsearch</li>
+            <li style="--dot-color:#dc382d">Redis</li>
           </ul>
         </div>
         <div class="skill-group">
@@ -127,9 +140,34 @@
         <div class="skill-group">
           <h3>Infrastructure / DevOps</h3>
           <ul class="tag-list">
-            <li style="--dot-color:#2496ed">Docker</li>
             <li style="--dot-color:#ff9900">AWS</li>
+            <li style="--dot-color:#2496ed">Docker</li>
+            <li style="--dot-color:#2088ff">GitHub Actions</li>
+            <li style="--dot-color:#8b949e">Openship</li>
             <li style="--dot-color:#f05032">Git</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud AWS</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#ff9900">EC2</li>
+            <li style="--dot-color:#ff9900">RDS</li>
+            <li style="--dot-color:#ff9900">ElastiCache</li>
+            <li style="--dot-color:#ff9900">S3</li>
+            <li style="--dot-color:#ff9900">CloudFront</li>
+            <li style="--dot-color:#ff9900">EventBridge</li>
+            <li style="--dot-color:#ff9900">IAM</li>
+            <li style="--dot-color:#ff9900">VPC</li>
+            <li style="--dot-color:#ff9900">ECR</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Auth / IdP / OIDC</h3>
+          <ul class="tag-list">
+            <li style="--dot-color:#8b949e">OAuth2 (PKCE)</li>
+            <li style="--dot-color:#4d4d4d">Keycloak</li>
+            <li style="--dot-color:#8b949e">SSO</li>
+            <li style="--dot-color:#8b949e">Federated Login</li>
           </ul>
         </div>
       </div>
@@ -151,6 +189,13 @@
       <h2 class="section__title">Esperienza lavorativa</h2>
       <ol class="timeline">
         <li class="timeline__item">
+          <div class="timeline__meta">07/2026 — Attuale</div>
+          <h3>Backend / DevOps Engineer (freelance) · Beento</h3>
+          <p>Gestione dell'infrastruttura AWS per applicazioni backend in ambienti dev, staging e production:
+             audit di costi e sicurezza, scheduling di EC2 e RDS con EventBridge, revisione di ruoli e policy IAM,
+             e migrazione dei database PostgreSQL da RDS a istanze self-hosted (Openship).</p>
+        </li>
+        <li class="timeline__item">
           <div class="timeline__meta">04/2026 — 07/2026</div>
           <h3>Backend Developer · Rextart SRL</h3>
           <p>Sviluppo di applicazioni web, API REST e microservizi in Java, con focus su architetture
@@ -159,11 +204,12 @@
         <li class="timeline__item">
           <div class="timeline__meta">11/2021 — 04/2026</div>
           <h3>Backend Developer · Humans.tech SRL</h3>
-          <p>Sviluppo di applicazioni web, API REST, plugin e connettori in Java e NodeJS (TypeScript)
-             per pubblica amministrazione, sanità pubblica e piattaforme internazionali.</p>
+          <p>Sviluppo di applicazioni web, API REST, plugin e connettori in Java e Node.js (TypeScript)
+             per pubblica amministrazione, sanità pubblica, una delle principali aziende mondiali di servizi
+             di traduzione e una piattaforma americana leader nel settore degli affitti.</p>
         </li>
         <li class="timeline__item">
-          <div class="timeline__meta">12/2021</div>
+          <div class="timeline__meta">2021</div>
           <h3>Formazione · Analista Programmatore</h3>
           <p>Istituto CEFI (Roma)</p>
         </li>
